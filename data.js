@@ -1,4 +1,4 @@
-var questions = ["test", "these"]
+var questions = [];
 
 var kanji = {
     aka: {
