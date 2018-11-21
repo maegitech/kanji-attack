@@ -7,17 +7,19 @@
         <script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
 	</head>
 	
-	<body background="">
+	<body id="background">
 		<div class="foreground">
-            <div class="game-container">
-                <p id="question"></p>
-                <input id="answerBar" type="text" placeholder="Search">
+            <div class="foreforeground">
+                <div class="game-container">
+                    <p id="question"></p>
+                    <input id="answerBar" type="text" placeholder="Search" autofocus>
+                    <p id="count"></p>
+                </div>
+                <div class="options-container">
+                    <form id="checkboxes"></form>
+                </div>
             </div>
-			<div class="options-container">
-                <form id="checkboxes">
-                    <p>check boxes go here</p>
-                </form>
-            </div>
+            
         </div>
         
     <!-- jQuery -->

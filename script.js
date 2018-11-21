@@ -1,5 +1,3 @@
-//https://www.dyn-web.com/tutorials/forms/checkbox/group.php
-
 // call onload or in script segment below form
 function attachCheckboxHandlers() {
     // get reference to element containing kanji checkboxes
@@ -24,22 +22,44 @@ function updateTotal(e) {
     // if check box is checked, push its name to array, otherwise remove it
     if ( this.checked ) {
         questions.push(this.name);
-        //updateQuestion();
     } else {
         var index = questions.indexOf(this.name);
         if (index > -1) {
             questions.splice(index, 1);
         }
-        //updateQuestion();
+    }
+}
+
+function answerQuestion() {
+    var answerInput = document.getElementById("answerBar").value;
+    if (answerInput == document.getElementById("question").innerHTML) {
+        count[0] += 1;
+        count[2] += 1;
+    } else {
+        count[2] += 1;
     }
 }
 
 function updateQuestion() {
     document.getElementById("question").innerHTML = questions[Math.floor((Math.random() * questions.length))];
+    document.getElementById("count").innerHTML = count.join("");
 }
-// console.log(questions[Math.floor((Math.random() * questions.length))]);
 
-window.onload=function () {
+function loadBackground() {
+    var dir = 'media/';
+
+    var backgrounds = [ 'arches.png',
+                        'seigaiha.png',
+                        'swirl_pattern.png',
+                        'wov.png'];
+
+    var randomCount = Math.round(Math.random() * (backgrounds.length - 1));
+
+    document.body.style.backgroundImage = "url(" + dir + backgrounds[randomCount] + ")";
+    document.body.style.backgroundRepeat = "repeat";
+}
+
+function createCheckboxes() {
     for (var i in kanji) {
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
@@ -56,17 +76,25 @@ window.onload=function () {
         document.getElementById("checkboxes").appendChild(label);
         document.getElementById("checkboxes").appendChild(br);
     }
+}
 
+function attachInputHandlers() {
     answerInput = document.getElementById("answerBar");
 	if(!!answerInput){
 		answerInput.addEventListener("keypress", function(a){
 			var key = a.keyCode;
 			if(key == 13){
+                answerQuestion();
 				updateQuestion();
 			}
 		});
     }
+}
 
+window.onload=function () {
+    createCheckboxes();
+    attachInputHandlers();
+    loadBackground();
     updateQuestion();
     attachCheckboxHandlers();
 }

@@ -17,5 +17,35 @@ body {
 	background-color: #1F2326;
     color: #F0F0F0;
 	height: 500px;
-	font-size: 25px;
+}
+
+#question {
+	font-size: 5em;
+}
+
+.foreforeground {
+	margin: auto;
+	background-color: rgb(51, 3, 3);
+	height: 100%;
+	width: 74%;
+	text-align: center;
+}
+
+#answerBar {
+	height: 38px;
+	width: 470px;
+	background-color: #1F2326;
+	border: 3px solid #008000;
+	color: #ffffff;
+	text-align: center;
+	font-size: 14px;
+}
+
+#count {
+	font-size: 78%;
+}
+
+.options-container {
+	text-align: left;
+	font-size: 1em;
 }
