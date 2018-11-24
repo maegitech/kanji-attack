@@ -32,16 +32,26 @@ function updateTotal(e) {
 
 function answerQuestion() {
     var answerInput = document.getElementById("answerBar").value;
-    if (answerInput == document.getElementById("question").innerHTML) {
+    if (answerInput == document.getElementById("hint").innerHTML) {
         count[0] += 1;
         count[2] += 1;
     } else {
         count[2] += 1;
     }
+    if(count[2] > 0){
+        $("#instruction").hide();
+        $("#count").show();        
+    }
 }
 
 function updateQuestion() {
-    document.getElementById("question").innerHTML = questions[Math.floor((Math.random() * questions.length))];
+    var randomQuestion = questions[Math.floor((Math.random() * questions.length))];
+    for (var i in kanji) {
+        if(randomQuestion == kanji[i].kanji) {
+            document.getElementById("question").innerHTML = kanji[i].kanji;
+            document.getElementById("hint").innerHTML = kanji[i].meaning;
+        }
+    }
     document.getElementById("count").innerHTML = count.join("");
 }
 
@@ -68,7 +78,7 @@ function createCheckboxes() {
         checkbox.id = kanji[i].romaji;
 
         var label = document.createElement('label')
-        label.appendChild(document.createTextNode(kanji[i].kanji));
+        label.appendChild(document.createTextNode(kanji[i].kanji + " " + kanji[i].meaning));
 
         var br = document.createElement("br");
 
@@ -80,21 +90,30 @@ function createCheckboxes() {
 
 function attachInputHandlers() {
     answerInput = document.getElementById("answerBar");
+    
 	if(!!answerInput){
 		answerInput.addEventListener("keypress", function(a){
-			var key = a.keyCode;
+            var key = a.keyCode;
 			if(key == 13){
                 answerQuestion();
-				updateQuestion();
-			}
+                updateQuestion();
+                answerInput.value = "";
+            }
 		});
     }
 }
 
+function loadDefaultCheckboxes() {
+    document.getElementById("answerBar").value = "";
+    document.getElementById("aka").checked = true;
+    questions.push("赤");
+}
+
 window.onload=function () {
     createCheckboxes();
-    attachInputHandlers();
+    attachInputHandlers()
     loadBackground();
+    loadDefaultCheckboxes();
     updateQuestion();
     attachCheckboxHandlers();
 }

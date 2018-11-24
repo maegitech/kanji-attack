@@ -1,5 +1,5 @@
 var questions = [];
-var count = [0, "/", -1];
+var count = [0, "/", 0];
 
 var kanji = {
     aka: {
