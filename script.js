@@ -46,10 +46,10 @@ function answerQuestion() {
 
 function updateQuestion() {
     var randomQuestion = questions[Math.floor((Math.random() * questions.length))];
-    for (var i in kanji) {
-        if(randomQuestion == kanji[i].kanji) {
-            document.getElementById("question").innerHTML = kanji[i].kanji;
-            document.getElementById("hint").innerHTML = kanji[i].meaning;
+    for (var i in radicals) {
+        if(randomQuestion == radicals[i].character) {
+            document.getElementById("question").innerHTML = radicals[i].character;
+            document.getElementById("hint").innerHTML = radicals[i].meaning;
         }
     }
     document.getElementById("count").innerHTML = count.join("");
@@ -70,15 +70,15 @@ function loadBackground() {
 }
 
 function createCheckboxes() {
-    for (var i in kanji) {
+    for (var i in radicals) {
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        checkbox.name = kanji[i].kanji;
-        checkbox.value = kanji[i].furigana;
-        checkbox.id = kanji[i].romaji;
+        checkbox.name = radicals[i].character;
+        checkbox.value = radicals[i].furigana;
+        checkbox.id = radicals[i].romaji;
 
         var label = document.createElement('label')
-        label.appendChild(document.createTextNode(kanji[i].kanji + " " + kanji[i].meaning));
+        label.appendChild(document.createTextNode(radicals[i].character + " " + radicals[i].meaning));
 
         var br = document.createElement("br");
 
