@@ -16,7 +16,7 @@ body {
 	width: 66%;
 	background-color: rgb(34, 34, 34);
     color: #F0F0F0;
-	height: 5000px;
+	height: 100%;
 }
 
 #question {
@@ -49,4 +49,75 @@ body {
 .options-container {
 	text-align: left;
 	font-size: 1em;
+}
+
+#checkbox-group1 {
+	height: 100%;
+	width: 25%;
+	display: inline-block;
+}
+
+#checkbox-group2 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group3 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group4 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group5 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group6 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group7 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group8 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group9 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group10 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group11 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group12 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group13 {
+	height: 100%;
+	width: 25%;
+}
+
+#checkbox-group14 {
+	height: 100%;
+	width: 25%;
 }

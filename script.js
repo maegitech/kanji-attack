@@ -1,7 +1,7 @@
 // call onload or in script segment below form
 function attachCheckboxHandlers() {
     // get reference to element containing kanji checkboxes
-    var el = document.getElementById('checkboxes');
+    var el = document.getElementById('checkbox-group1');
 
     // get reference to input elements in checkbox container element
     var tops = el.getElementsByTagName('input');
@@ -74,17 +74,73 @@ function createCheckboxes() {
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         checkbox.name = radicals[i].character;
-        checkbox.value = radicals[i].furigana;
-        checkbox.id = radicals[i].romaji;
+        checkbox.value = radicals[i].meaning;
+        checkbox.id = radicals[i].meaning;
 
         var label = document.createElement('label')
-        label.appendChild(document.createTextNode(radicals[i].character + " " + radicals[i].meaning));
+        label.appendChild(document.createTextNode(radicals[i].character + " " + radicals[i].meaning + " " + radicals[i].index));
 
         var br = document.createElement("br");
-
-        document.getElementById("checkboxes").appendChild(checkbox);
-        document.getElementById("checkboxes").appendChild(label);
-        document.getElementById("checkboxes").appendChild(br);
+        
+        var val = radicals[i].index;
+        
+        if (val <= 16) {
+            document.getElementById("checkbox-group1").appendChild(checkbox);
+            document.getElementById("checkbox-group1").appendChild(label);
+            document.getElementById("checkbox-group1").appendChild(br);
+        } else if (val <= 32) {
+            document.getElementById("checkbox-group2").appendChild(checkbox);
+            document.getElementById("checkbox-group2").appendChild(label);
+            document.getElementById("checkbox-group2").appendChild(br);
+        } else if (val <= 48) {
+            document.getElementById("checkbox-group3").appendChild(checkbox);
+            document.getElementById("checkbox-group3").appendChild(label);
+            document.getElementById("checkbox-group3").appendChild(br);
+        } else if (val <= 64) {
+            document.getElementById("checkbox-group4").appendChild(checkbox);
+            document.getElementById("checkbox-group4").appendChild(label);
+            document.getElementById("checkbox-group4").appendChild(br);
+        } else if (val <= 80) {
+            document.getElementById("checkbox-group5").appendChild(checkbox);
+            document.getElementById("checkbox-group5").appendChild(label);
+            document.getElementById("checkbox-group5").appendChild(br);
+        } else if (val <= 96) {
+            document.getElementById("checkbox-group6").appendChild(checkbox);
+            document.getElementById("checkbox-group6").appendChild(label);
+            document.getElementById("checkbox-group6").appendChild(br);
+        } else if (val <= 112) {
+            document.getElementById("checkbox-group7").appendChild(checkbox);
+            document.getElementById("checkbox-group7").appendChild(label);
+            document.getElementById("checkbox-group7").appendChild(br);
+        } else if (val <= 128) {
+            document.getElementById("checkbox-group8").appendChild(checkbox);
+            document.getElementById("checkbox-group8").appendChild(label);
+            document.getElementById("checkbox-group8").appendChild(br);
+        } else if (val <= 144) {
+            document.getElementById("checkbox-group9").appendChild(checkbox);
+            document.getElementById("checkbox-group9").appendChild(label);
+            document.getElementById("checkbox-group9").appendChild(br);
+        } else if (val <= 160) {
+            document.getElementById("checkbox-group10").appendChild(checkbox);
+            document.getElementById("checkbox-group10").appendChild(label);
+            document.getElementById("checkbox-group10").appendChild(br);
+        } else if (val <= 176) {
+            document.getElementById("checkbox-group11").appendChild(checkbox);
+            document.getElementById("checkbox-group11").appendChild(label);
+            document.getElementById("checkbox-group11").appendChild(br);
+        } else if (val <= 192) {
+            document.getElementById("checkbox-group12").appendChild(checkbox);
+            document.getElementById("checkbox-group12").appendChild(label);
+            document.getElementById("checkbox-group12").appendChild(br);
+        } else if (val <= 208) {
+            document.getElementById("checkbox-group13").appendChild(checkbox);
+            document.getElementById("checkbox-group13").appendChild(label);
+            document.getElementById("checkbox-group13").appendChild(br);
+        } else if (val <= 214) {
+            document.getElementById("checkbox-group14").appendChild(checkbox);
+            document.getElementById("checkbox-group14").appendChild(label);
+            document.getElementById("checkbox-group14").appendChild(br);
+        }
     }
 }
 
@@ -105,8 +161,21 @@ function attachInputHandlers() {
 
 function loadDefaultCheckboxes() {
     document.getElementById("answerBar").value = "";
-    document.getElementById("aka").checked = true;
-    questions.push("赤");
+    for (var i in radicals) {
+        if(radicals[i].index == 1) {
+            document.getElementById(radicals[i].meaning).checked = true;
+            questions.push(radicals[i].character);
+        }
+    }
+}
+
+function check(max) {
+    for (var i in radicals) {
+        if(radicals[i].index <= max) {
+            document.getElementById(radicals[i].meaning).checked = true;
+            questions.push(radicals[i].character);
+        }
+    }
 }
 
 window.onload=function () {

@@ -2,24 +2,14 @@ var questions = [];
 var count = [0, "/", 0];
 
 var radicals = {
+    /*
     aka: {
         romaji: "aka",
         character: "赤",
         furigana: "あか",
         meaning: "red"
     },
-    midori: {
-        romaji: "midori",
-        character: "緑",
-        furigana: "みどり",
-        meaning: "green"
-    },
-    ao: {
-        romaji: "ao",
-        character: "青",
-        furigana: "あお",
-        meaning: "blue"
-    },
+    */
     one: {
         character: "一",
         meaning: "one",
@@ -40,19 +30,19 @@ var radicals = {
         meaning: "slash",
         index: 4
     },
-    fishhook: {
+    second: {
         character: "乙",
-        meaning: "fishhook",
+        meaning: "second",
         index: 5
     },
-    fishhookA: {
+    secondA: {
         character: "⺄",
-        meaning: "fishhook",
+        meaning: "second",
         index: 5
     },
-    fishhookB: {
+    secondB: {
         character: "乚",
-        meaning: "fishhook",
+        meaning: "second",
         index: 5
     },
     hook: {
@@ -95,14 +85,14 @@ var radicals = {
         meaning: "enter",
         index: 11
     },
-    divide: {
+    eight: {
         character: "八",
-        meaning: "divide",
+        meaning: "eight",
         index: 12
     },
-    box: {
+    wide: {
         character: "冂",
-        meaning: "box",
+        meaning: "wide",
         index: 13
     },
     cover: {
@@ -145,9 +135,9 @@ var radicals = {
         meaning: "wrap",
         index: 20
     },
-    cane: {
+    box: {
         character: "匕",
-        meaning: "cane",
+        meaning: "box",
         index: 21
     },
     casket: {
@@ -190,14 +180,14 @@ var radicals = {
         meaning: "private",
         index: 28
     },
-    outstretchedHand: {
+    again: {
         character: "又",
-        meaning: "outstretched hand",
+        meaning: "again",
         index: 29
     },
-    outstretchedHandA: {
+    againA: {
         character: "𠂇",
-        meaning: "outstretched hand",
+        meaning: "again",
         index: 29
     },
     mouth: {
@@ -217,982 +207,1227 @@ var radicals = {
     },
     warrior: {
         character: "士",
-        meaning: "warrior"
+        meaning: "warrior",
+        index: 33
     },
     go: {
         character: "夂",
-        meaning: "go"
+        meaning: "go",
+        index: 34
     },
     goSlowly: {
         character: "夊",
-        meaning: "go slowly"
+        meaning: "go slowly",
+        index: 35
     },
     evening: {
         character: "夕",
-        meaning: "evening"
+        meaning: "evening",
+        index: 36
     },
     big: {
         character: "大",
-        meaning: "big"
+        meaning: "big",
+        index: 37
     },
     woman: {
         character: "女",
-        meaning: "woman"
+        meaning: "woman",
+        index: 38
     },
     child: {
         character: "子",
-        meaning: "child"
+        meaning: "child",
+        index: 39
     },
     roof: {
         character: "宀",
-        meaning: "roof"
+        meaning: "roof",
+        index: 40
     },
     inch: {
         character: "寸",
-        meaning: "inch, held wrist"
+        meaning: "inch, held wrist",
+        index: 41
     },
     small: {
         character: "小",
-        meaning: "small"
+        meaning: "small",
+        index: 42
     },
     smallA: {
         character: "⺌",
-        meaning: "small"
+        meaning: "small",
+        index: 42
     },
     smallB: {
         character: "⺍",
-        meaning: "small"
+        meaning: "small",
+        index: 42
     },
-    hardTimeWalking: {
+    lame: {
         character: "尢",
-        meaning: "hard time walking"
+        meaning: "lame",
+        index: 43
     },
-    hardTimeWalkingA: {
+    lameA: {
         character: "尣",
-        meaning: "hard time walking"
+        meaning: "lame",
+        index: 43
     },
     corpse: {
         character: "尸",
-        meaning: "corpse"
+        meaning: "corpse",
+        index: 44
     },
     sprout: {
         character: "屮",
-        meaning: "sprout"
+        meaning: "sprout",
+        index: 45
     },
     mountain: {
         character: "山",
-        meaning: "mountain"
+        meaning: "mountain",
+        index: 46
     },
     river: {
         character: "巛",
-        meaning: "river"
+        meaning: "river",
+        index: 47
     },
     riverA: {
         character: "川",
-        meaning: "river"
+        meaning: "river",
+        index: 47
     },
     riverB: {
         character: "巜",
-        meaning: "river"
+        meaning: "river",
+        index: 47
     },
-    worktool: {
+    work: {
         character: "工",
-        meaning: "worktool"
+        meaning: "work",
+        index: 48
     },
     oneself: {
         character: "己",
-        meaning: "oneself"
+        meaning: "oneself",
+        index: 49
     },
-    kerchief: {
+    turban: {
         character: "巾",
-        meaning: "kerchief"
+        meaning: "turban",
+        index: 50
     },
     dry: {
         character: "干",
-        meaning: "dry"
+        meaning: "dry",
+        index: 51
     },
     shortThread: {
         character: "幺",
-        meaning: "short thread"
+        meaning: "short thread",
+        index: 52
     },
     canopy: {
         character: "广",
-        meaning: "canopy"
+        meaning: "canopy",
+        index: 53
     },
-    goingALongDistance: {
+    longStride: {
         character: "廴",
-        meaning: "going a long distance"
+        meaning: "long stride",
+        index: 54
     },
     bothHands: {
         character: "廾",
-        meaning: "both hands"
+        meaning: "both hands",
+        index: 55
     },
-    stake: {
+    shoot: {
         character: "弋",
-        meaning: "stake"
+        meaning: "shoot",
+        index: 56
     },
     bow: {
         character: "弓",
-        meaning: "bow"
+        meaning: "bow",
+        index: 57
     },
     snout: {
         character: "彐",
-        meaning: "snout"
+        meaning: "snout",
+        index: 58
     },
     snoutA: {
         character: "彑",
-        meaning: "snout"
+        meaning: "snout",
+        index: 58
     },
     bristle: {
         character: "彡",
-        meaning: "bristle"
+        meaning: "bristle",
+        index: 59
     },
     step: {
         character: "彳",
-        meaning: "step"
+        meaning: "step",
+        index: 60
     },
     heart: {
         character: "心",
-        meaning: "heart"
+        meaning: "heart",
+        index: 61
     },
     heartA: {
         character: "忄",
-        meaning: "heart"
+        meaning: "heart",
+        index: 61
     },
     heartB: {
         character: "⺗",
-        meaning: "heart"
+        meaning: "heart",
+        index: 61
     },
     halberd: {
         character: "戈",
-        meaning: "halberd"
+        meaning: "halberd",
+        index: 62
     },
     door: {
         character: "戶",
-        meaning: "door"
+        meaning: "door",
+        index: 63
     },
     doorA: {
         character: "户",
-        meaning: "door"
+        meaning: "door",
+        index: 63
     },
     doorB: {
         character: "戸",
-        meaning: "door"
+        meaning: "door",
+        index: 63
     },
     hand: {
         character: "手",
-        meaning: "hand"
+        meaning: "hand",
+        index: 64
     },
     handA: {
         character: "扌",
-        meaning: "hand"
+        meaning: "hand",
+        index: 64
     },
     handB: {
         character: "龵",
-        meaning: "hand"
+        meaning: "hand",
+        index: 64
     },
     branch: {
         character: "支",
-        meaning: "branch"
+        meaning: "branch",
+        index: 65
     },
     tap: {
         character: "攴",
-        meaning: "tap"
+        meaning: "tap",
+        index: 66
     },
     tapA: {
         character: "攵",
-        meaning: "tap"
+        meaning: "tap",
+        index: 66
     },
-    writing: {
+    script: {
         character: "文",
-        meaning: "writing"
+        meaning: "script",
+        index: 67
     },
     dipper: {
         character: "斗",
-        meaning: "dipper"
+        meaning: "dipper",
+        index: 68
     },
     axe: {
         character: "斤",
-        meaning: "axe"
+        meaning: "axe",
+        index: 69
     },
-    flag: {
+    square: {
         character: "方",
-        meaning: "flag"
+        meaning: "square",
+        index: 70
     },
     not: {
         character: "无",
-        meaning: "not"
+        meaning: "not",
+        index: 71
     },
     notA: {
         character: "旡",
-        meaning: "not"
+        meaning: "not",
+        index: 71
     },
     sun: {
         character: "日",
-        meaning: "sun"
+        meaning: "sun",
+        index: 72
     },
     say: {
         character: "曰",
-        meaning: "say"
+        meaning: "say",
+        index: 73
     },
     moon: {
         character: "月",
-        meaning: "moon"
+        meaning: "moon",
+        index: 74
     },
     tree: {
         character: "木",
-        meaning: "tree"
+        meaning: "tree",
+        index: 75
     },
-    personDoingSomething: {
+    lack: {
         character: "欠",
-        meaning: "person doing something"
+        meaning: "lack",
+        index: 76
     },
     stop: {
         character: "止",
-        meaning: "stop"
+        meaning: "stop",
+        index: 77
     },
     death: {
         character: "歹",
-        meaning: "death"
+        meaning: "death",
+        index: 78
     },
     deathA: {
         character: "歺",
-        meaning: "death"
+        meaning: "death",
+        index: 78
     },
     weapon: {
         character: "殳",
-        meaning: "weapon"
+        meaning: "weapon",
+        index: 79
     },
     mother: {
         character: "毋",
-        meaning: "mother"
+        meaning: "mother",
+        index: 80
     },
     motherA: {
         character: "母",
-        meaning: "mother"
+        meaning: "mother",
+        index: 80
     },
     compare: {
         character: "比",
-        meaning: "compare"
+        meaning: "compare",
+        index: 81
     },
     fur: {
         character: "毛",
-        meaning: "fur"
+        meaning: "fur",
+        index: 82
     },
     clan: {
         character: "氏",
-        meaning: "clan"
+        meaning: "clan",
+        index: 83
     },
     steam: {
         character: "气",
-        meaning: "steam"
+        meaning: "steam",
+        index: 84
     },
     water: {
         character: "水",
-        meaning: "water"
+        meaning: "water",
+        index: 85
     },
     waterA: {
         character: "氺",
-        meaning: "water"
+        meaning: "water",
+        index: 85
     },
     waterB: {
         character: "氵",
-        meaning: "water"
+        meaning: "water",
+        index: 85
     },
     fire: {
         character: "火",
-        meaning: "fire"
+        meaning: "fire",
+        index: 86
     },
     fireA: {
         character: "灬",
-        meaning: "fire"
+        meaning: "fire",
+        index: 86
     },
-    fingernail: {
+    claw: {
         character: "爪",
-        meaning: "fingernail"
+        meaning: "claw",
+        index: 87
     },
-    fingernailA: {
+    clawA: {
         character: "爫",
-        meaning: "fingernail"
+        meaning: "claw",
+        index: 87
     },
     father: {
         character: "父",
-        meaning: "father"
+        meaning: "father",
+        index: 88
     },
-    various: {
+    trigrams: {
         character: "爻",
-        meaning: "various"
+        meaning: "trigrams",
+        index: 89
     },
-    couch: {
+    splitWood: {
         character: "爿",
-        meaning: "couch"
+        meaning: "split wood",
+        index: 90
     },
-    couchA: {
+    splitWoodA: {
         character: "丬",
-        meaning: "couch"
+        meaning: "split wood",
+        index: 90
     },
-    fragment: {
+    slice: {
         character: "片",
-        meaning: "fragment"
+        meaning: "slice",
+        index: 91
     },
-    tooth: {
+    fang: {
         character: "牙",
-        meaning: "tooth"
+        meaning: "fang",
+        index: 92
     },
     cow: {
         character: "牛",
-        meaning: "cow"
+        meaning: "cow",
+        index: 93
     },
     cowA: {
         character: "牜",
-        meaning: "cow"
+        meaning: "cow",
+        index: 93
     },
     cowB: {
         character: "⺧",
-        meaning: "cow"
+        meaning: "cow",
+        index: 93
     },
     dog: {
         character: "犬",
-        meaning: "dog"
+        meaning: "dog",
+        index: 94
     },
     dogA: {
         character: "犭",
-        meaning: "dog"
+        meaning: "dog",
+        index: 94
     },
     profound: {
         character: "玄",
-        meaning: "profound"
+        meaning: "profound",
+        index: 95
     },
     jade: {
         character: "玉",
-        meaning: "jade"
+        meaning: "jade",
+        index: 96
     },
     jadeA: {
         character: "玊",
-        meaning: "jade"
+        meaning: "jade",
+        index: 96
     },
     jadeB: {
         character: "王",
-        meaning: "jade"
+        meaning: "jade",
+        index: 96
     },
     jadeC: {
         character: "⺩",
-        meaning: "jade"
+        meaning: "jade",
+        index: 96
     },
     melon: {
         character: "瓜",
-        meaning: "melon"
+        meaning: "melon",
+        index: 97
     },
     tile: {
         character: "瓦",
-        meaning: "tile"
+        meaning: "tile",
+        index: 98
     },
     sweet: {
         character: "甘",
-        meaning: "sweet"
+        meaning: "sweet",
+        index: 99
     },
     life: {
         character: "生",
-        meaning: "life"
+        meaning: "life",
+        index: 100
     },
     use: {
         character: "用",
-        meaning: "use"
+        meaning: "use",
+        index: 101
     },
     field: {
         character: "田",
-        meaning: "field"
+        meaning: "field",
+        index: 102
     },
-    rollOfCloth: {
+    boltOfCloth: {
         character: "疋",
-        meaning: "roll of cloth"
+        meaning: "bolt of cloth",
+        index: 103
     },
-    rollOfClothA: {
+    boltOfClothA: {
         character: "⺪",
-        meaning: "roll of cloth"
+        meaning: "bolt of cloth",
+        index: 103
     },
     sickness: {
         character: "疒",
-        meaning: "sickness"
+        meaning: "sickness",
+        index: 104
     },
     bothFeet: {
         character: "癶",
-        meaning: "both feet"
+        meaning: "both feet",
+        index: 105
     },
     white: {
         character: "白",
-        meaning: "white"
+        meaning: "white",
+        index: 106
     },
-    skinning: {
+    skin: {
         character: "皮",
-        meaning: "skinning"
+        meaning: "skin",
+        index: 107
     },
     dish: {
         character: "皿",
-        meaning: "dish"
+        meaning: "dish",
+        index: 108
     },
     eye: {
         character: "目",
-        meaning: "eye"
+        meaning: "eye",
+        index: 109
     },
     spear: {
         character: "矛",
-        meaning: "spear"
+        meaning: "spear",
+        index: 110
     },
     arrow: {
         character: "矢",
-        meaning: "arrow"
+        meaning: "arrow",
+        index: 111
     },
     stone: {
         character: "石",
-        meaning: "stone"
+        meaning: "stone",
+        index: 112
     },
-    altar: {
+    spirit: {
         character: "示",
-        meaning: "altar"
+        meaning: "spirit",
+        index: 113
     },
-    altarA: {
+    spiritA: {
         character: "礻",
-        meaning: "altar"
+        meaning: "spirit",
+        index: 113
     },
-    animalTracks: {
+    track: {
         character: "禸",
-        meaning: "animal tracks"
+        meaning: "track",
+        index: 114
     },
     grain: {
         character: "禾",
-        meaning: "grain"
+        meaning: "grain",
+        index: 115
     },
     cave: {
         character: "穴",
-        meaning: "cave"
+        meaning: "cave",
+        index: 116
     },
-    standing: {
+    stand: {
         character: "立",
-        meaning: "standing"
+        meaning: "stand",
+        index: 117
     },
     bamboo: {
         character: "竹",
-        meaning: "bamboo"
+        meaning: "bamboo",
+        index: 118
     },
     bambooA: {
         character: "⺮",
-        meaning: "bamboo"
+        meaning: "bamboo",
+        index: 118
     },
     rice: {
         character: "米",
-        meaning: "rice"
+        meaning: "rice",
+        index: 119
     },
-    thread: {
+    silk: {
         character: "糸",
-        meaning: "thread"
+        meaning: "silk",
+        index: 120
     },
-    threadA: {
+    silkA: {
         character: "糹",
-        meaning: "thread"
+        meaning: "silk",
+        index: 120
     },
     jar: {
         character: "缶",
-        meaning: "jar"
+        meaning: "jar",
+        index: 121
     },
     net: {
         character: "网",
-        meaning: "net"
+        meaning: "net",
+        index: 122
     },
     netA: {
         character: "罒",
-        meaning: "net"
+        meaning: "net",
+        index: 122
     },
     netB: {
         character: "罓",
-        meaning: "net"
+        meaning: "net",
+        index: 122
     },
     netC: {
         character: "⺳",
-        meaning: "net"
+        meaning: "net",
+        index: 122
     },
     sheep: {
         character: "羊",
-        meaning: "sheep"
+        meaning: "sheep",
+        index: 123
     },
     sheepA: {
         character: "⺶",
-        meaning: "sheep"
+        meaning: "sheep",
+        index: 123
     },
     sheepB: {
         character: "⺷",
-        meaning: "sheep"
+        meaning: "sheep",
+        index: 123
     },
     feather: {
         character: "羽",
-        meaning: "feather"
+        meaning: "feather",
+        index: 124
     },
     old: {
         character: "老",
-        meaning: "old"
+        meaning: "old",
+        index: 125
     },
     oldA: {
         character: "耂",
-        meaning: "old"
+        meaning: "old",
+        index: 125
     },
-    sideburns: {
+    and: {
         character: "而",
-        meaning: "sideburns"
+        meaning: "and",
+        index: 126
     },
     plow: {
         character: "耒",
-        meaning: "plow"
+        meaning: "plow",
+        index: 127
     },
     ear: {
         character: "耳",
-        meaning: "ear"
+        meaning: "ear",
+        index: 128
     },
-    writingInstrument: {
+    brush: {
         character: "聿",
-        meaning: "writing instrument"
+        meaning: "brush",
+        index: 129
     },
-    writingInstrumentA: {
+    brushA: {
         character: "⺻",
-        meaning: "writing instrument"
+        meaning: "brush",
+        index: 129
     },
     meat: {
         character: "肉",
-        meaning: "meat"
+        meaning: "meat",
+        index: 130
     },
     meatA: {
         character: "⺼",
-        meaning: "meat"
+        meaning: "meat",
+        index: 130
     },
-    servant: {
+    minister: {
         character: "臣",
-        meaning: "servant"
+        meaning: "minister",
+        index: 131
     },
-    nose: {
+    self: {
         character: "自",
-        meaning: "nose"
+        meaning: "self",
+        index: 132
     },
     arrive: {
         character: "至",
-        meaning: "arrive"
+        meaning: "arrive",
+        index: 133
     },
-    millstone: {
+    mortar: {
         character: "臼",
-        meaning: "millstone"
+        meaning: "mortar",
+        index: 134
     },
     tongue: {
         character: "舌",
-        meaning: "tongue"
+        meaning: "tongue",
+        index: 135
     },
     oppose: {
         character: "舛",
-        meaning: "oppose"
+        meaning: "oppose",
+        index: 136
     },
     boat: {
         character: "舟",
-        meaning: "boat"
+        meaning: "boat",
+        index: 137
     },
     stopping: {
         character: "艮",
-        meaning: "stopping"
+        meaning: "stopping",
+        index: 138
     },
-    facialAppearance: {
+    color: {
         character: "色",
-        meaning: "facial appearance"
+        meaning: "color",
+        index: 139
     },
     grass: {
         character: "艸",
-        meaning: "grass"
+        meaning: "grass",
+        index: 140
     },
     grassA: {
         character: "艹",
-        meaning: "grass"
+        meaning: "grass",
+        index: 140
     },
     tiger: {
         character: "虍",
-        meaning: "tiger"
+        meaning: "tiger",
+        index: 141
     },
     insect: {
         character: "虫",
-        meaning: "insect"
+        meaning: "insect",
+        index: 142
     },
     blood: {
         character: "血",
-        meaning: "blood"
+        meaning: "blood",
+        index: 143
     },
-    highway: {
+    walk: {
         character: "行",
-        meaning: "highway, travel"
+        meaning: "walk enclosure",
+        index: 144
     },
     clothes: {
         character: "衣",
-        meaning: "clothes"
+        meaning: "clothes",
+        index: 145
     },
     clothesA: {
         character: "衤",
-        meaning: "clothes"
+        meaning: "clothes",
+        index: 145
     },
-    west: {
+    cover: {
         character: "襾",
-        meaning: "west"
+        meaning: "cover",
+        index: 146
     },
-    westA: {
+    coverA: {
         character: "西",
-        meaning: "west"
+        meaning: "cover",
+        index: 146
     },
-    westB: {
+    coverB: {
         character: "覀",
-        meaning: "west"
+        meaning: "cover",
+        index: 146
     },
     see: {
         character: "見",
-        meaning: "see"
+        meaning: "see",
+        index: 147
     },
-    animalHorn: {
+    horn: {
         character: "角",
-        meaning: "animal horn"
+        meaning: "horn",
+        index: 148
     },
     speech: {
         character: "言",
-        meaning: "speech"
+        meaning: "speech",
+        index: 149
     },
     speechA: {
         character: "訁",
-        meaning: "speech"
+        meaning: "speech",
+        index: 149
     },
     valley: {
         character: "谷",
-        meaning: "valley"
+        meaning: "valley",
+        index: 150
     },
-    goblet: {
+    bean: {
         character: "豆",
-        meaning: "goblet, beanstalks"
+        meaning: "bean",
+        index: 151
     },
     pig: {
         character: "豕",
-        meaning: "pig"
+        meaning: "pig",
+        index: 152
     },
-    wildAnimal: {
+    badger: {
         character: "豸",
-        meaning: "wild animal"
+        meaning: "badger",
+        index: 153
     },
     shell: {
         character: "貝",
-        meaning: "shell"
+        meaning: "shell",
+        index: 154
     },
     red: {
         character: "赤",
-        meaning: "red"
+        meaning: "red",
+        index: 155
     },
     run: {
         character: "走",
-        meaning: "run"
+        meaning: "run",
+        index: 156
     },
     runA: {
         character: "赱",
-        meaning: "run"
+        meaning: "run",
+        index: 156
     },
     foot: {
         character: "足",
-        meaning: "foot"
+        meaning: "foot",
+        index: 157
     },
     footA: {
         character: "⻊",
-        meaning: "foot"
+        meaning: "foot",
+        index: 157
     },
     body: {
         character: "身",
-        meaning: "body"
+        meaning: "body",
+        index: 158
     },
     cart: {
         character: "車",
-        meaning: "cart"
+        meaning: "cart",
+        index: 159
     },
-    crime: {
+    bitter: {
         character: "辛",
-        meaning: "crime, bitter"
+        meaning: "bitter",
+        index: 160
     },
-    farmingHoe: {
+    morning: {
         character: "辰",
-        meaning: "farming hoe"
+        meaning: "morning",
+        index: 161
     },
     walk: {
         character: "辵",
-        meaning: "walk"
+        meaning: "walk",
+        index: 162
     },
     walkA: {
         character: "辶",
-        meaning: "walk"
+        meaning: "walk",
+        index: 162
     },
     walkB: {
         character: "⻌",
-        meaning: "walk"
+        meaning: "walk",
+        index: 162
     },
     city: {
         character: "邑",
-        meaning: "city"
+        meaning: "city",
+        index: 163
     },
     cityA: {
         character: "阝",
-        meaning: "city, mound"
+        meaning: "city, mound",
+        index: 163
     },
     alcohol: {
         character: "酉",
-        meaning: "alcohol"
+        meaning: "alcohol",
+        index: 164
     },
-    discern: {
+    distinguish: {
         character: "釆",
-        meaning: "discern"
+        meaning: "distinguish",
+        index: 165
     },
     village: {
         character: "里",
-        meaning: "village"
+        meaning: "village",
+        index: 166
     },
     gold: {
         character: "金",
-        meaning: "gold, metal"
+        meaning: "gold, metal",
+        index: 167
     },
     goldA: {
         character: "釒",
-        meaning: "gold, metal"
+        meaning: "gold, metal",
+        index: 167
     },
     long: {
         character: "長",
-        meaning: "long"
+        meaning: "long",
+        index: 168
     },
     longA: {
         character: "镸",
-        meaning: "long"
+        meaning: "long",
+        index: 168
     },
     gate: {
         character: "門",
-        meaning: "gate"
+        meaning: "gate",
+        index: 169
     },
     mound: {
         character: "阜",
-        meaning: "mound"
+        meaning: "mound",
+        index: 170
     },
-    chaseAndSeize: {
+    slave: {
         character: "隶",
-        meaning: "chase and seize"
+        meaning: "slave",
+        index: 171
     },
     shortTailedBird: {
         character: "隹",
-        meaning: "short-tailed bird"
+        meaning: "short-tailed bird",
+        index: 172
     },
     rain: {
         character: "雨",
-        meaning: "rain"
+        meaning: "rain",
+        index: 173
     },
     blue: {
         character: "青",
-        meaning: "blue, green"
+        meaning: "blue",
+        index: 174
     },
     blueA: {
         character: "靑",
-        meaning: "blue, green"
+        meaning: "blue",
+        index: 174
     },
     wrong: {
         character: "非",
-        meaning: "wrong"
+        meaning: "wrong",
+        index: 175
     },
     face: {
         character: "面",
-        meaning: "face"
+        meaning: "face",
+        index: 176
     },
     faceA: {
         character: "靣",
-        meaning: "face"
+        meaning: "face",
+        index: 176
     },
     leather: {
         character: "革",
-        meaning: "leather"
+        meaning: "leather",
+        index: 177
     },
-    defend: {
+    tannedLeather: {
         character: "韋",
-        meaning: "defend, tanned leather"
+        meaning: "tanned leather",
+        index: 178
     },
     leek: {
         character: "韭",
-        meaning: "leek"
+        meaning: "leek",
+        index: 179
     },
     sound: {
         character: "音",
-        meaning: "sound"
+        meaning: "sound",
+        index: 180
     },
-    noggin: {
+    leaf: {
         character: "頁",
-        meaning: "noggin"
+        meaning: "leaf",
+        index: 181
     },
     wind: {
         character: "風",
-        meaning: "wind"
+        meaning: "wind",
+        index: 182
     },
     windA: {
         character: "𠘨",
-        meaning: "wind"
+        meaning: "wind",
+        index: 182
     },
-    flying: {
+    fly: {
         character: "飛",
-        meaning: "flying"
+        meaning: "fly",
+        index: 183
     },
     eat: {
         character: "食",
-        meaning: "eat"
+        meaning: "eat",
+        index: 184
     },
     eatA: {
         character: "飠",
-        meaning: "eat"
+        meaning: "eat",
+        index: 184
     },
     head: {
         character: "首",
-        meaning: "head"
+        meaning: "head",
+        index: 185
     },
-    aroma: {
+    fragrant: {
         character: "香",
-        meaning: "aroma"
+        meaning: "fragrant",
+        index: 186
     },
     horse: {
         character: "馬",
-        meaning: "horse"
+        meaning: "horse",
+        index: 187
     },
     bone: {
         character: "骨",
-        meaning: "bone"
+        meaning: "bone",
+        index: 188
     },
     tall: {
         character: "高",
-        meaning: "tall"
+        meaning: "tall",
+        index: 189
     },
     tallA: {
         character: "髙",
-        meaning: "tall"
+        meaning: "tall",
+        index: 189
     },
-    longHair: {
+    hair: {
         character: "髟",
-        meaning: "long hair"
+        meaning: "hair",
+        index: 190
     },
     fight: {
         character: "鬥",
-        meaning: "fight"
+        meaning: "fight",
+        index: 191
     },
-    ceremonialWine: {
+    sacrificialWine: {
         character: "鬯",
-        meaning: "ceremonial wine"
+        meaning: "sacrificial wine",
+        index: 192
     },
     cauldron: {
         character: "鬲",
-        meaning: "cauldron"
+        meaning: "cauldron",
+        index: 193
     },
-    ghostsAndGoblins: {
+    ghost: {
         character: "鬼",
-        meaning: "ghosts and goblins"
+        meaning: "ghost",
+        index: 194
     },
     fish: {
         character: "魚",
-        meaning: "fish"
+        meaning: "fish",
+        index: 195
     },
     bird: {
         character: "鳥",
-        meaning: "bird"
+        meaning: "bird",
+        index: 196
     },
     salt: {
         character: "鹵",
-        meaning: "salt"
+        meaning: "salt",
+        index: 197
     },
     deer: {
         character: "鹿",
-        meaning: "deer"
+        meaning: "deer",
+        index: 198
     },
     wheat: {
         character: "麥",
-        meaning: "wheat"
+        meaning: "wheat",
+        index: 199
     },
     wheatA: {
         character: "麦",
-        meaning: "wheat"
+        meaning: "wheat",
+        index: 199
     },
     hemp: {
         character: "麻",
-        meaning: "hemp"
+        meaning: "hemp",
+        index: 200
     },
     yellow: {
         character: "黃",
-        meaning: "yellow"
+        meaning: "yellow",
+        index: 201
     },
     yellowA: {
         character: "黄",
-        meaning: "yellow"
+        meaning: "yellow",
+        index: 201
     },
     millet: {
         character: "黍",
-        meaning: "millet"
+        meaning: "millet",
+        index: 202
     },
     black: {
         character: "黑",
-        meaning: "black"
+        meaning: "black",
+        index: 203
     },
     blackA: {
         character: "黒",
-        meaning: "black"
+        meaning: "black",
+        index: 203
     },
     embroidery: {
         character: "黹",
-        meaning: "embroidery"
+        meaning: "embroidery",
+        index: 204
     },
     frog: {
         character: "黽",
-        meaning: "frog"
+        meaning: "frog",
+        index: 205
     },
-    threeLeggedCauldron: {
+    drum: {
         character: "鼎",
-        meaning: "three-legged cauldron"
+        meaning: "drum",
+        index: 206
     },
     drum: {
         character: "鼓",
-        meaning: "drum"
+        meaning: "drum",
+        index: 207
     },
     rat: {
         character: "鼠",
-        meaning: "rat"
+        meaning: "rat",
+        index: 208
     },
-    sniff: {
+    nose: {
         character: "鼻",
-        meaning: "sniff"
+        meaning: "nose",
+        index: 209
     },
-    uniformity: {
+    even: {
         character: "齊",
-        meaning: "uniformity"
+        meaning: "even",
+        index: 210
     },
-    uniformityA: {
+    evenA: {
         character: "斉",
-        meaning: "uniformity"
+        meaning: "even",
+        index: 210
     },
-    teething: {
+    tooth: {
         character: "齒",
-        meaning: "teething"
+        meaning: "tooth",
+        index: 211
     },
-    teethingA: {
+    toothA: {
         character: "歯",
-        meaning: "teething"
+        meaning: "tooth",
+        index: 211
     },
     dragon: {
         character: "龍",
-        meaning: "dragon"
+        meaning: "dragon",
+        index: 212
     },
     dragonA: {
         character: "竜",
-        meaning: "dragon"
+        meaning: "dragon",
+        index: 212
     },
     turtle: {
         character: "龜",
-        meaning: "turtle"
+        meaning: "turtle",
+        index: 213
     },
     turtleA: {
         character: "亀",
-        meaning: "turtle"
+        meaning: "turtle",
+        index: 213
     },
-    panFlute: {
+    flute: {
         character: "龠",
-        meaning: "pan flute"
+        meaning: "flute",
+        index: 214
     }
 }
