@@ -1,15 +1,8 @@
 var questions = [];
 var count = [0, "/", 0];
+var toggle = false;
 
 var radicals = {
-    /*
-    aka: {
-        romaji: "aka",
-        character: "赤",
-        furigana: "あか",
-        meaning: "red"
-    },
-    */
     one: {
         character: "一",
         meaning: "one",
@@ -32,16 +25,8 @@ var radicals = {
     },
     second: {
         character: "乙",
-        meaning: "second",
-        index: 5
-    },
-    secondA: {
-        character: "⺄",
-        meaning: "second",
-        index: 5
-    },
-    secondB: {
-        character: "乚",
+        altCharacterA: "⺄",
+        altCharacterB: "乚",
         meaning: "second",
         index: 5
     },
@@ -62,16 +47,8 @@ var radicals = {
     },
     man: {
         character: "人",
-        meaning: "man",
-        index: 9
-    },
-    manA: {
-        character: "亻",
-        meaning: "man",
-        index: 9
-    },
-    manB: {
-        character: "𠆢",
+        altCharacterA: "亻",
+        altCharacterB: "𠆢",
         meaning: "man",
         index: 9
     },
@@ -95,9 +72,9 @@ var radicals = {
         meaning: "wide",
         index: 13
     },
-    cover: {
+    clothCover: {
         character: "冖",
-        meaning: "cover",
+        meaning: "cloth cover",
         index: 14
     },
     ice: {
@@ -117,11 +94,7 @@ var radicals = {
     },
     knife: {
         character: "刀",
-        meaning: "knife",
-        index: 18
-    },
-    knifeA: {
-        character: "刂",
+        altCharacterA: "刂",
         meaning: "knife",
         index: 18
     },
@@ -162,11 +135,7 @@ var radicals = {
     },
     insignia: {
         character: "卩",
-        meaning: "insignia",
-        index: 26
-    },
-    insigniaA: {
-        character: "㔾",
+        altCharacterA: "㔾",
         meaning: "insignia",
         index: 26
     },
@@ -182,11 +151,7 @@ var radicals = {
     },
     again: {
         character: "又",
-        meaning: "again",
-        index: 29
-    },
-    againA: {
-        character: "𠂇",
+        altCharacterA: "𠂇",
         meaning: "again",
         index: 29
     },
@@ -252,26 +217,14 @@ var radicals = {
     },
     small: {
         character: "小",
-        meaning: "small",
-        index: 42
-    },
-    smallA: {
-        character: "⺌",
-        meaning: "small",
-        index: 42
-    },
-    smallB: {
-        character: "⺍",
+        altCharacterA: "⺌",
+        altCharacterB: "⺍",
         meaning: "small",
         index: 42
     },
     lame: {
         character: "尢",
-        meaning: "lame",
-        index: 43
-    },
-    lameA: {
-        character: "尣",
+        altCharacterA: "尣",
         meaning: "lame",
         index: 43
     },
@@ -292,16 +245,8 @@ var radicals = {
     },
     river: {
         character: "巛",
-        meaning: "river",
-        index: 47
-    },
-    riverA: {
-        character: "川",
-        meaning: "river",
-        index: 47
-    },
-    riverB: {
-        character: "巜",
+        altCharacterA: "川",
+        altCharacterB: "巜",
         meaning: "river",
         index: 47
     },
@@ -357,11 +302,7 @@ var radicals = {
     },
     snout: {
         character: "彐",
-        meaning: "snout",
-        index: 58
-    },
-    snoutA: {
-        character: "彑",
+        altCharacterA: "彑",
         meaning: "snout",
         index: 58
     },
@@ -377,16 +318,8 @@ var radicals = {
     },
     heart: {
         character: "心",
-        meaning: "heart",
-        index: 61
-    },
-    heartA: {
-        character: "忄",
-        meaning: "heart",
-        index: 61
-    },
-    heartB: {
-        character: "⺗",
+        altCharacterA: "忄",
+        altCharacterB: "⺗",
         meaning: "heart",
         index: 61
     },
@@ -397,31 +330,15 @@ var radicals = {
     },
     door: {
         character: "戶",
-        meaning: "door",
-        index: 63
-    },
-    doorA: {
-        character: "户",
-        meaning: "door",
-        index: 63
-    },
-    doorB: {
-        character: "戸",
+        altCharacterA: "户",
+        altCharacterB: "戸",
         meaning: "door",
         index: 63
     },
     hand: {
         character: "手",
-        meaning: "hand",
-        index: 64
-    },
-    handA: {
-        character: "扌",
-        meaning: "hand",
-        index: 64
-    },
-    handB: {
-        character: "龵",
+        altCharacterA: "扌",
+        altCharacterB: "龵",
         meaning: "hand",
         index: 64
     },
@@ -432,11 +349,7 @@ var radicals = {
     },
     tap: {
         character: "攴",
-        meaning: "tap",
-        index: 66
-    },
-    tapA: {
-        character: "攵",
+        altCharacterA: "攵",
         meaning: "tap",
         index: 66
     },
@@ -462,11 +375,7 @@ var radicals = {
     },
     not: {
         character: "无",
-        meaning: "not",
-        index: 71
-    },
-    notA: {
-        character: "旡",
+        altCharacterA: "旡",
         meaning: "not",
         index: 71
     },
@@ -502,11 +411,7 @@ var radicals = {
     },
     death: {
         character: "歹",
-        meaning: "death",
-        index: 78
-    },
-    deathA: {
-        character: "歺",
+        altCharacterA: "歺",
         meaning: "death",
         index: 78
     },
@@ -517,11 +422,7 @@ var radicals = {
     },
     mother: {
         character: "毋",
-        meaning: "mother",
-        index: 80
-    },
-    motherA: {
-        character: "母",
+        altCharacterA: "母",
         meaning: "mother",
         index: 80
     },
@@ -547,36 +448,20 @@ var radicals = {
     },
     water: {
         character: "水",
-        meaning: "water",
-        index: 85
-    },
-    waterA: {
-        character: "氺",
-        meaning: "water",
-        index: 85
-    },
-    waterB: {
-        character: "氵",
+        altCharacterA: "氺",
+        altCharacterB: "氵",
         meaning: "water",
         index: 85
     },
     fire: {
         character: "火",
-        meaning: "fire",
-        index: 86
-    },
-    fireA: {
-        character: "灬",
+        altCharacterA: "灬",
         meaning: "fire",
         index: 86
     },
     claw: {
         character: "爪",
-        meaning: "claw",
-        index: 87
-    },
-    clawA: {
-        character: "爫",
+        altCharacterA: "爫",
         meaning: "claw",
         index: 87
     },
@@ -592,11 +477,7 @@ var radicals = {
     },
     splitWood: {
         character: "爿",
-        meaning: "split wood",
-        index: 90
-    },
-    splitWoodA: {
-        character: "丬",
+        altCharacterA: "丬",
         meaning: "split wood",
         index: 90
     },
@@ -612,26 +493,14 @@ var radicals = {
     },
     cow: {
         character: "牛",
-        meaning: "cow",
-        index: 93
-    },
-    cowA: {
-        character: "牜",
-        meaning: "cow",
-        index: 93
-    },
-    cowB: {
-        character: "⺧",
+        altCharacterA: "牜",
+        altCharacterB: "⺧",
         meaning: "cow",
         index: 93
     },
     dog: {
         character: "犬",
-        meaning: "dog",
-        index: 94
-    },
-    dogA: {
-        character: "犭",
+        altCharacterB: "犭",
         meaning: "dog",
         index: 94
     },
@@ -642,21 +511,9 @@ var radicals = {
     },
     jade: {
         character: "玉",
-        meaning: "jade",
-        index: 96
-    },
-    jadeA: {
-        character: "玊",
-        meaning: "jade",
-        index: 96
-    },
-    jadeB: {
-        character: "王",
-        meaning: "jade",
-        index: 96
-    },
-    jadeC: {
-        character: "⺩",
+        altCharacterA: "玊",
+        altCharacterB: "王",
+        altCharacterC: "⺩",
         meaning: "jade",
         index: 96
     },
@@ -692,11 +549,7 @@ var radicals = {
     },
     boltOfCloth: {
         character: "疋",
-        meaning: "bolt of cloth",
-        index: 103
-    },
-    boltOfClothA: {
-        character: "⺪",
+        altCharacterA: "⺪",
         meaning: "bolt of cloth",
         index: 103
     },
@@ -747,11 +600,7 @@ var radicals = {
     },
     spirit: {
         character: "示",
-        meaning: "spirit",
-        index: 113
-    },
-    spiritA: {
-        character: "礻",
+        altCharacterA: "礻",
         meaning: "spirit",
         index: 113
     },
@@ -777,11 +626,7 @@ var radicals = {
     },
     bamboo: {
         character: "竹",
-        meaning: "bamboo",
-        index: 118
-    },
-    bambooA: {
-        character: "⺮",
+        altCharacterA: "⺮",
         meaning: "bamboo",
         index: 118
     },
@@ -792,11 +637,7 @@ var radicals = {
     },
     silk: {
         character: "糸",
-        meaning: "silk",
-        index: 120
-    },
-    silkA: {
-        character: "糹",
+        altCharacterA: "糹",
         meaning: "silk",
         index: 120
     },
@@ -807,36 +648,16 @@ var radicals = {
     },
     net: {
         character: "网",
-        meaning: "net",
-        index: 122
-    },
-    netA: {
-        character: "罒",
-        meaning: "net",
-        index: 122
-    },
-    netB: {
-        character: "罓",
-        meaning: "net",
-        index: 122
-    },
-    netC: {
-        character: "⺳",
+        altCharacterA: "罒",
+        altCharacterB: "罓",
+        altCharacterC: "⺳",
         meaning: "net",
         index: 122
     },
     sheep: {
         character: "羊",
-        meaning: "sheep",
-        index: 123
-    },
-    sheepA: {
-        character: "⺶",
-        meaning: "sheep",
-        index: 123
-    },
-    sheepB: {
-        character: "⺷",
+        altCharacterA: "⺶",
+        altCharacterB: "⺷",
         meaning: "sheep",
         index: 123
     },
@@ -847,11 +668,7 @@ var radicals = {
     },
     old: {
         character: "老",
-        meaning: "old",
-        index: 125
-    },
-    oldA: {
-        character: "耂",
+        altCharacterA: "耂",
         meaning: "old",
         index: 125
     },
@@ -872,21 +689,13 @@ var radicals = {
     },
     brush: {
         character: "聿",
-        meaning: "brush",
-        index: 129
-    },
-    brushA: {
-        character: "⺻",
+        altCharacterA: "⺻",
         meaning: "brush",
         index: 129
     },
     meat: {
         character: "肉",
-        meaning: "meat",
-        index: 130
-    },
-    meatA: {
-        character: "⺼",
+        altCharacterA: "⺼",
         meaning: "meat",
         index: 130
     },
@@ -937,11 +746,7 @@ var radicals = {
     },
     grass: {
         character: "艸",
-        meaning: "grass",
-        index: 140
-    },
-    grassA: {
-        character: "艹",
+        altCharacterA: "艹",
         meaning: "grass",
         index: 140
     },
@@ -960,33 +765,21 @@ var radicals = {
         meaning: "blood",
         index: 143
     },
-    walk: {
+    walkEnclosure: {
         character: "行",
         meaning: "walk enclosure",
         index: 144
     },
     clothes: {
         character: "衣",
-        meaning: "clothes",
-        index: 145
-    },
-    clothesA: {
-        character: "衤",
+        altCharacterA: "衤",
         meaning: "clothes",
         index: 145
     },
     cover: {
         character: "襾",
-        meaning: "cover",
-        index: 146
-    },
-    coverA: {
-        character: "西",
-        meaning: "cover",
-        index: 146
-    },
-    coverB: {
-        character: "覀",
+        altCharacterA: "西",
+        altCharacterB: "覀",
         meaning: "cover",
         index: 146
     },
@@ -1002,11 +795,7 @@ var radicals = {
     },
     speech: {
         character: "言",
-        meaning: "speech",
-        index: 149
-    },
-    speechA: {
-        character: "訁",
+        altCharacterA: "訁",
         meaning: "speech",
         index: 149
     },
@@ -1042,21 +831,13 @@ var radicals = {
     },
     run: {
         character: "走",
-        meaning: "run",
-        index: 156
-    },
-    runA: {
-        character: "赱",
+        altCharacterA: "赱",
         meaning: "run",
         index: 156
     },
     foot: {
         character: "足",
-        meaning: "foot",
-        index: 157
-    },
-    footA: {
-        character: "⻊",
+        altCharacterA: "⻊",
         meaning: "foot",
         index: 157
     },
@@ -1082,27 +863,15 @@ var radicals = {
     },
     walk: {
         character: "辵",
-        meaning: "walk",
-        index: 162
-    },
-    walkA: {
-        character: "辶",
-        meaning: "walk",
-        index: 162
-    },
-    walkB: {
-        character: "⻌",
+        altCharacterA: "辶",
+        altCharacterB: "⻌",
         meaning: "walk",
         index: 162
     },
     city: {
         character: "邑",
+        altCharacterA: "阝",
         meaning: "city",
-        index: 163
-    },
-    cityA: {
-        character: "阝",
-        meaning: "city, mound",
         index: 163
     },
     alcohol: {
@@ -1122,21 +891,13 @@ var radicals = {
     },
     gold: {
         character: "金",
-        meaning: "gold, metal",
-        index: 167
-    },
-    goldA: {
-        character: "釒",
+        altCharacterA: "釒",
         meaning: "gold, metal",
         index: 167
     },
     long: {
         character: "長",
-        meaning: "long",
-        index: 168
-    },
-    longA: {
-        character: "镸",
+        altCharacterA: "镸",
         meaning: "long",
         index: 168
     },
@@ -1167,11 +928,7 @@ var radicals = {
     },
     blue: {
         character: "青",
-        meaning: "blue",
-        index: 174
-    },
-    blueA: {
-        character: "靑",
+        altCharacterA: "靑",
         meaning: "blue",
         index: 174
     },
@@ -1182,11 +939,7 @@ var radicals = {
     },
     face: {
         character: "面",
-        meaning: "face",
-        index: 176
-    },
-    faceA: {
-        character: "靣",
+        altCharacterA: "靣",
         meaning: "face",
         index: 176
     },
@@ -1217,11 +970,7 @@ var radicals = {
     },
     wind: {
         character: "風",
-        meaning: "wind",
-        index: 182
-    },
-    windA: {
-        character: "𠘨",
+        altCharacterA: "𠘨",
         meaning: "wind",
         index: 182
     },
@@ -1232,11 +981,7 @@ var radicals = {
     },
     eat: {
         character: "食",
-        meaning: "eat",
-        index: 184
-    },
-    eatA: {
-        character: "飠",
+        altCharacterA: "飠",
         meaning: "eat",
         index: 184
     },
@@ -1262,11 +1007,7 @@ var radicals = {
     },
     tall: {
         character: "高",
-        meaning: "tall",
-        index: 189
-    },
-    tallA: {
-        character: "髙",
+        altCharacterA: "髙",
         meaning: "tall",
         index: 189
     },
@@ -1317,11 +1058,7 @@ var radicals = {
     },
     wheat: {
         character: "麥",
-        meaning: "wheat",
-        index: 199
-    },
-    wheatA: {
-        character: "麦",
+        altCharacterA: "麦",
         meaning: "wheat",
         index: 199
     },
@@ -1332,11 +1069,7 @@ var radicals = {
     },
     yellow: {
         character: "黃",
-        meaning: "yellow",
-        index: 201
-    },
-    yellowA: {
-        character: "黄",
+        altCharacterA: "黄",
         meaning: "yellow",
         index: 201
     },
@@ -1347,11 +1080,7 @@ var radicals = {
     },
     black: {
         character: "黑",
-        meaning: "black",
-        index: 203
-    },
-    blackA: {
-        character: "黒",
+        altCharacterA: "黒",
         meaning: "black",
         index: 203
     },
@@ -1365,7 +1094,7 @@ var radicals = {
         meaning: "frog",
         index: 205
     },
-    drum: {
+    tripod: {
         character: "鼎",
         meaning: "drum",
         index: 206
@@ -1387,41 +1116,25 @@ var radicals = {
     },
     even: {
         character: "齊",
-        meaning: "even",
-        index: 210
-    },
-    evenA: {
-        character: "斉",
+        altCharacterA: "斉",
         meaning: "even",
         index: 210
     },
     tooth: {
         character: "齒",
-        meaning: "tooth",
-        index: 211
-    },
-    toothA: {
-        character: "歯",
+        altCharacterA: "歯",
         meaning: "tooth",
         index: 211
     },
     dragon: {
         character: "龍",
-        meaning: "dragon",
-        index: 212
-    },
-    dragonA: {
-        character: "竜",
+        altCharacterA: "竜",
         meaning: "dragon",
         index: 212
     },
     turtle: {
         character: "龜",
-        meaning: "turtle",
-        index: 213
-    },
-    turtleA: {
-        character: "亀",
+        altCharacterA: "亀",
         meaning: "turtle",
         index: 213
     },

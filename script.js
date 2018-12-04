@@ -1,33 +1,138 @@
-// call onload or in script segment below form
-function attachCheckboxHandlers() {
-    // get reference to element containing kanji checkboxes
-    var el = document.getElementById('checkbox-group1');
-
-    // get reference to input elements in checkbox container element
-    var tops = el.getElementsByTagName('input');
-    
-    // assign updateTotal function to onclick property of each checkbox
-    for (var i=0, len=tops.length; i<len; i++) {
-        if ( tops[i].type === 'checkbox' ) {
-            tops[i].onclick = updateTotal;
+function addQuestion(min, max) {
+    for(var i in radicals) {
+        if(radicals[i].index > min && radicals[i].index <= max) {
+            questions.push(radicals[i].character);
         }
     }
+    //alert(questions);
 }
 
-// called onclick of kanji checkboxes
-function updateTotal(e) {
-    // 'this' is reference to checkbox clicked on
-    var form = this.form;
-    
-    // if check box is checked, push its name to array, otherwise remove it
-    if ( this.checked ) {
-        questions.push(this.name);
-    } else {
-        var index = questions.indexOf(this.name);
-        if (index > -1) {
-            questions.splice(index, 1);
+function removeQuestion(min, max) {
+    for(var i in radicals) {
+        if (radicals[i].index > min && radicals[i].index <= max) {
+            var index = questions.indexOf(radicals[i].character);
+            if (index > -1) {
+                questions.splice(index, 1);
+            }
         }
     }
+    //alert(questions);
+}
+
+function attachCheckboxHandlers() {
+    document.getElementById('checkbox-row1').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(0, 16);
+        } else {
+            removeQuestion(0, 16);
+        }
+    };
+    document.getElementById('checkbox-row2').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(16, 32);
+        } else {
+            removeQuestion(16, 32);
+        }
+    };
+    document.getElementById('checkbox-row3').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(32, 48);
+        } else {
+            removeQuestion(32, 48);
+        }
+    };
+    document.getElementById('checkbox-row4').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(48, 64);
+        } else {
+            removeQuestion(48, 64);
+        }
+    };
+    document.getElementById('checkbox-row5').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(64, 80);
+        } else {
+            removeQuestion(64, 80);
+        }
+    };
+    document.getElementById('checkbox-row6').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(80, 96);
+        } else {
+            removeQuestion(80, 96);
+        }
+    };
+    document.getElementById('checkbox-row7').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(96, 112);
+        } else {
+            removeQuestion(96, 112);
+        }
+    };
+    document.getElementById('checkbox-row8').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(112, 128);
+        } else {
+            removeQuestion(112, 128);
+        }
+    };
+    document.getElementById('checkbox-row9').onclick = function() {
+       if ( this.checked ) {
+            addQuestion(128, 144);
+        } else {
+            removeQuestion(128, 144);
+        }
+    };
+    document.getElementById('checkbox-row10').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(144, 160);
+        } else {
+            removeQuestion(144, 160);
+        }
+    };
+    document.getElementById('checkbox-row11').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(160, 176);
+        } else {
+            removeQuestion(160, 176);
+        }
+    };
+    document.getElementById('checkbox-row12').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(176, 192);
+        } else {
+            removeQuestion(176, 192);
+        }
+    };
+    document.getElementById('checkbox-row13').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(192, 208);
+        } else {
+            removeQuestion(192, 208);
+        }
+    };
+    document.getElementById('checkbox-row14').onclick = function() {
+        if ( this.checked ) {
+            addQuestion(208, 214);
+        } else {
+            removeQuestion(208, 214);
+        }
+    };
+}
+
+// called onclick of toppings checkboxes
+function updateTotal(e) {
+    // if check box is checked, add its value to val, otherwise subtract it
+    if ( this.checked ) {
+        questions.push();
+        val += parseFloat(this.value);
+    } else {
+        val -= parseFloat(this.value);
+    }
+    
+    // format val with correct number of decimal places
+    // and use it to update value of total text box
+    form.elements['total'].value = formatDecimal(val);
 }
 
 function answerQuestion() {
@@ -69,78 +174,40 @@ function loadBackground() {
     document.body.style.backgroundRepeat = "repeat";
 }
 
-function createCheckboxes() {
+function createTable() {
+    var arr = [];
+
     for (var i in radicals) {
+        arr.push(radicals[i].character);
+    }
+    
+    for (var i in arr) {
+        var box = document.createElement('td');
+        var boxText = document.createTextNode(arr[i]);
+    
+        if(i % 16 == 0) {
+            var tr = document.createElement("tr");
+        }
+        
+        document.getElementById("radical-table").appendChild(tr);
+        tr.appendChild(box);
+        box.appendChild(boxText);
+    }
+}
+
+function createCheckboxes() {
+    for (var i = 1; i <= 14; i++) {
+        var box = document.createElement('td');
+        box.id = "checkbox-group";
         var checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        checkbox.name = radicals[i].character;
-        checkbox.value = radicals[i].meaning;
-        checkbox.id = radicals[i].meaning;
+        checkbox.id = "checkbox-row" + i;
 
-        var label = document.createElement('label')
-        label.appendChild(document.createTextNode(radicals[i].character + " " + radicals[i].meaning + " " + radicals[i].index));
+        var tr = document.createElement("tr");
 
-        var br = document.createElement("br");
-        
-        var val = radicals[i].index;
-        
-        if (val <= 16) {
-            document.getElementById("checkbox-group1").appendChild(checkbox);
-            document.getElementById("checkbox-group1").appendChild(label);
-            document.getElementById("checkbox-group1").appendChild(br);
-        } else if (val <= 32) {
-            document.getElementById("checkbox-group2").appendChild(checkbox);
-            document.getElementById("checkbox-group2").appendChild(label);
-            document.getElementById("checkbox-group2").appendChild(br);
-        } else if (val <= 48) {
-            document.getElementById("checkbox-group3").appendChild(checkbox);
-            document.getElementById("checkbox-group3").appendChild(label);
-            document.getElementById("checkbox-group3").appendChild(br);
-        } else if (val <= 64) {
-            document.getElementById("checkbox-group4").appendChild(checkbox);
-            document.getElementById("checkbox-group4").appendChild(label);
-            document.getElementById("checkbox-group4").appendChild(br);
-        } else if (val <= 80) {
-            document.getElementById("checkbox-group5").appendChild(checkbox);
-            document.getElementById("checkbox-group5").appendChild(label);
-            document.getElementById("checkbox-group5").appendChild(br);
-        } else if (val <= 96) {
-            document.getElementById("checkbox-group6").appendChild(checkbox);
-            document.getElementById("checkbox-group6").appendChild(label);
-            document.getElementById("checkbox-group6").appendChild(br);
-        } else if (val <= 112) {
-            document.getElementById("checkbox-group7").appendChild(checkbox);
-            document.getElementById("checkbox-group7").appendChild(label);
-            document.getElementById("checkbox-group7").appendChild(br);
-        } else if (val <= 128) {
-            document.getElementById("checkbox-group8").appendChild(checkbox);
-            document.getElementById("checkbox-group8").appendChild(label);
-            document.getElementById("checkbox-group8").appendChild(br);
-        } else if (val <= 144) {
-            document.getElementById("checkbox-group9").appendChild(checkbox);
-            document.getElementById("checkbox-group9").appendChild(label);
-            document.getElementById("checkbox-group9").appendChild(br);
-        } else if (val <= 160) {
-            document.getElementById("checkbox-group10").appendChild(checkbox);
-            document.getElementById("checkbox-group10").appendChild(label);
-            document.getElementById("checkbox-group10").appendChild(br);
-        } else if (val <= 176) {
-            document.getElementById("checkbox-group11").appendChild(checkbox);
-            document.getElementById("checkbox-group11").appendChild(label);
-            document.getElementById("checkbox-group11").appendChild(br);
-        } else if (val <= 192) {
-            document.getElementById("checkbox-group12").appendChild(checkbox);
-            document.getElementById("checkbox-group12").appendChild(label);
-            document.getElementById("checkbox-group12").appendChild(br);
-        } else if (val <= 208) {
-            document.getElementById("checkbox-group13").appendChild(checkbox);
-            document.getElementById("checkbox-group13").appendChild(label);
-            document.getElementById("checkbox-group13").appendChild(br);
-        } else if (val <= 214) {
-            document.getElementById("checkbox-group14").appendChild(checkbox);
-            document.getElementById("checkbox-group14").appendChild(label);
-            document.getElementById("checkbox-group14").appendChild(br);
-        }
+        document.getElementById("checkbox-table").appendChild(tr);
+        tr.appendChild(box);
+        box.appendChild(checkbox);
     }
 }
 
@@ -162,25 +229,17 @@ function attachInputHandlers() {
 function loadDefaultCheckboxes() {
     document.getElementById("answerBar").value = "";
     for (var i in radicals) {
-        if(radicals[i].index == 1) {
-            document.getElementById(radicals[i].meaning).checked = true;
-            questions.push(radicals[i].character);
-        }
-    }
-}
-
-function check(max) {
-    for (var i in radicals) {
-        if(radicals[i].index <= max) {
-            document.getElementById(radicals[i].meaning).checked = true;
+        if(radicals[i].index <= 16) {
+            document.getElementById("checkbox-row1").checked = true;
             questions.push(radicals[i].character);
         }
     }
 }
 
 window.onload=function () {
+    createTable();
     createCheckboxes();
-    attachInputHandlers()
+    attachInputHandlers();
     loadBackground();
     loadDefaultCheckboxes();
     updateQuestion();

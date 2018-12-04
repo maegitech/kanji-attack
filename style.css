@@ -1,3 +1,7 @@
+html, body {
+	height: 100%;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,11 +20,9 @@ body {
 	width: 66%;
 	background-color: rgb(34, 34, 34);
     color: #F0F0F0;
-	height: 100%;
-}
-
-#question {
-	font-size: 5em;
+	min-height: 100%;
+    height: auto !important;
+    height: 100%;
 }
 
 .foreforeground {
@@ -28,8 +30,14 @@ body {
 	background-color: rgb(33, 33, 33);
 	box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.12), 1px 2px 2px 1px rgba(0,0,0,0.24);
 	height: 100%;
-	width: 74%;
+	width: 56%;
 	text-align: center;
+}
+
+#question {
+	display: table;
+	margin: 0 auto;
+	font-size: 5em;
 }
 
 #answerBar {
@@ -46,78 +54,66 @@ body {
 	font-size: 78%;
 }
 
-.options-container {
+#options-container {
 	text-align: left;
 	font-size: 1em;
 }
 
-#checkbox-group1 {
-	height: 100%;
-	width: 25%;
-	display: inline-block;
+#radical-table, td {
+	border: 1px solid green;
+	border-collapse: collapse;
+	text-align: center;
+	line-height: 2vw;
+	width: 2vw;
+	height: 2vw;
 }
 
-#checkbox-group2 {
-	height: 100%;
-	width: 25%;
+#checkbox-table {
+	border: 1px solid green;
+	border-collapse: collapse;
+	text-align: center;
+	line-height: 2vw;
+	width: 2vw;
+	height: 2vw;
+	border-left: 0px solid;
 }
 
-#checkbox-group3 {
-	height: 100%;
-	width: 25%;
+table {
+	float: left;
+	table-layout: fixed;
 }
 
-#checkbox-group4 {
-	height: 100%;
-	width: 25%;
+#table-container {
+	display: table;
+	margin: 0 auto;
 }
 
-#checkbox-group5 {
-	height: 100%;
-	width: 25%;
+hr {
+	width: 100%;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border-top: 1px dashed rgb(165, 165, 165);
+	border-bottom: 0px dashed rgba(248, 231, 231, 0.26);
 }
 
-#checkbox-group6 {
-	height: 100%;
-	width: 25%;
+.showradical {
+	display: block;
+	font-size: 14px;
+	font-weight: 700;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	width: 200px;
+	height: 30px;
+	cursor: pointer;
+	background-color: rgb(34, 34, 34);
+	box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.12), 1px 2px 2px 1px rgba(0,0,0,0.24);
+	line-height: 1.8em;
 }
 
-#checkbox-group7 {
-	height: 100%;
-	width: 25%;
+#placeholder {
+	margin-top: 30px;
 }
 
-#checkbox-group8 {
-	height: 100%;
-	width: 25%;
-}
-
-#checkbox-group9 {
-	height: 100%;
-	width: 25%;
-}
-
-#checkbox-group10 {
-	height: 100%;
-	width: 25%;
-}
-
-#checkbox-group11 {
-	height: 100%;
-	width: 25%;
-}
-
-#checkbox-group12 {
-	height: 100%;
-	width: 25%;
-}
-
-#checkbox-group13 {
-	height: 100%;
-	width: 25%;
-}
-
-#checkbox-group14 {
-	height: 100%;
-	width: 25%;
+h4 {
+	margin-bottom: 30px;
 }
