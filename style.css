@@ -68,16 +68,6 @@ body {
 	height: 2vw;
 }
 
-#checkbox-table {
-	border: 1px solid green;
-	border-collapse: collapse;
-	text-align: center;
-	line-height: 2vw;
-	width: 2vw;
-	height: 2vw;
-	border-left: 0px solid;
-}
-
 table {
 	float: left;
 	table-layout: fixed;
@@ -110,7 +100,7 @@ hr {
 	line-height: 1.8em;
 }
 
-#placeholder {
+#placeholder, #instruction {
 	margin-top: 30px;
 }
 

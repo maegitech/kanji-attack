@@ -4,7 +4,6 @@ function addQuestion(min, max) {
             questions.push(radicals[i].character);
         }
     }
-    //alert(questions);
 }
 
 function removeQuestion(min, max) {
@@ -16,7 +15,6 @@ function removeQuestion(min, max) {
             }
         }
     }
-    //alert(questions);
 }
 
 function attachCheckboxHandlers() {
@@ -120,21 +118,6 @@ function attachCheckboxHandlers() {
     };
 }
 
-// called onclick of toppings checkboxes
-function updateTotal(e) {
-    // if check box is checked, add its value to val, otherwise subtract it
-    if ( this.checked ) {
-        questions.push();
-        val += parseFloat(this.value);
-    } else {
-        val -= parseFloat(this.value);
-    }
-    
-    // format val with correct number of decimal places
-    // and use it to update value of total text box
-    form.elements['total'].value = formatDecimal(val);
-}
-
 function answerQuestion() {
     var answerInput = document.getElementById("answerBar").value;
     if (answerInput == document.getElementById("hint").innerHTML) {
@@ -176,6 +159,7 @@ function loadBackground() {
 
 function createTable() {
     var arr = [];
+    var j = 0;
 
     for (var i in radicals) {
         arr.push(radicals[i].character);
@@ -184,30 +168,23 @@ function createTable() {
     for (var i in arr) {
         var box = document.createElement('td');
         var boxText = document.createTextNode(arr[i]);
-    
-        if(i % 16 == 0) {
+        var checkbox = document.createElement('input');
+        checkbox.type = "checkbox";
+        
+        if(i % 17 == 0) {
             var tr = document.createElement("tr");
+            j += 1;
         }
+    
+        checkbox.id = "checkbox-row" + j;
         
         document.getElementById("radical-table").appendChild(tr);
         tr.appendChild(box);
-        box.appendChild(boxText);
-    }
-}
-
-function createCheckboxes() {
-    for (var i = 1; i <= 14; i++) {
-        var box = document.createElement('td');
-        box.id = "checkbox-group";
-        var checkbox = document.createElement('input');
-        checkbox.type = "checkbox";
-        checkbox.id = "checkbox-row" + i;
-
-        var tr = document.createElement("tr");
-
-        document.getElementById("checkbox-table").appendChild(tr);
-        tr.appendChild(box);
-        box.appendChild(checkbox);
+        if(i % 17 == 0) {
+            box.appendChild(checkbox);
+        } else {
+            box.appendChild(boxText);
+        }
     }
 }
 
@@ -237,10 +214,9 @@ function loadDefaultCheckboxes() {
 }
 
 window.onload=function () {
-    createTable();
-    createCheckboxes();
-    attachInputHandlers();
     loadBackground();
+    createTable();
+    attachInputHandlers();
     loadDefaultCheckboxes();
     updateQuestion();
     attachCheckboxHandlers();

@@ -3,6 +3,9 @@ var count = [0, "/", 0];
 var toggle = false;
 
 var radicals = {
+    placeholder1: {
+        row: 1
+    },
     one: {
         character: "一",
         meaning: "one",
@@ -87,6 +90,9 @@ var radicals = {
         meaning: "table",
         index: 16
     },
+    placeholder2: {
+        row: 2
+    },
     container: {
         character: "凵",
         meaning: "container",
@@ -169,6 +175,9 @@ var radicals = {
         character: "土",
         meaning: "earth",
         index: 32
+    },
+    placeholder3: {
+        row: 3
     },
     warrior: {
         character: "士",
@@ -254,6 +263,9 @@ var radicals = {
         character: "工",
         meaning: "work",
         index: 48
+    },
+    placeholder4: {
+        row: 4
     },
     oneself: {
         character: "己",
@@ -342,6 +354,9 @@ var radicals = {
         meaning: "hand",
         index: 64
     },
+    placeholder5: {
+        row: 5
+    },
     branch: {
         character: "支",
         meaning: "branch",
@@ -425,6 +440,9 @@ var radicals = {
         altCharacterA: "母",
         meaning: "mother",
         index: 80
+    },
+    placeholder6: {
+        row: 6
     },
     compare: {
         character: "比",
@@ -517,6 +535,9 @@ var radicals = {
         meaning: "jade",
         index: 96
     },
+    placeholder7: {
+        row: 7
+    },
     melon: {
         character: "瓜",
         meaning: "melon",
@@ -597,6 +618,9 @@ var radicals = {
         character: "石",
         meaning: "stone",
         index: 112
+    },
+    placeholder8: {
+        row: 8
     },
     spirit: {
         character: "示",
@@ -687,6 +711,9 @@ var radicals = {
         meaning: "ear",
         index: 128
     },
+    placeholder9: {
+        row: 9
+    },
     brush: {
         character: "聿",
         altCharacterA: "⺻",
@@ -769,6 +796,9 @@ var radicals = {
         character: "行",
         meaning: "walk enclosure",
         index: 144
+    },
+    placeholder10: {
+        row: 10
     },
     clothes: {
         character: "衣",
@@ -855,6 +885,9 @@ var radicals = {
         character: "辛",
         meaning: "bitter",
         index: 160
+    },
+    placeholder11: {
+        row: 11
     },
     morning: {
         character: "辰",
@@ -943,6 +976,9 @@ var radicals = {
         meaning: "face",
         index: 176
     },
+    placeholder12: {
+        row: 12
+    },
     leather: {
         character: "革",
         meaning: "leather",
@@ -1026,6 +1062,9 @@ var radicals = {
         meaning: "sacrificial wine",
         index: 192
     },
+    placeholder13: {
+        row: 13
+    },
     cauldron: {
         character: "鬲",
         meaning: "cauldron",
@@ -1108,6 +1147,9 @@ var radicals = {
         character: "鼠",
         meaning: "rat",
         index: 208
+    },
+    placeholder14: {
+        row: 14
     },
     nose: {
         character: "鼻",
