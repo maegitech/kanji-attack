@@ -925,7 +925,7 @@ var radicals = {
     gold: {
         character: "金",
         altCharacterA: "釒",
-        meaning: "gold, metal",
+        meaning: "gold",
         index: 167
     },
     long: {
