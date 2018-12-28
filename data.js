@@ -1135,7 +1135,7 @@ var radicals = {
     },
     tripod: {
         character: "鼎",
-        meaning: "drum",
+        meaning: "tripod",
         index: 206
     },
     drum: {
