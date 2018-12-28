@@ -124,6 +124,7 @@ function answerQuestion() {
         count[0] += 1;
         count[2] += 1;
     } else {
+        alert(document.getElementById("correction").innerHTML);
         count[2] += 1;
     }
     if(count[2] > 0){
@@ -136,6 +137,7 @@ function updateQuestion() {
     var randomQuestion = questions[Math.floor((Math.random() * questions.length))];
     for (var i in radicals) {
         if(randomQuestion == radicals[i].character) {
+            document.getElementById("correction").innerHTML = radicals[i].character + " = " + radicals[i].meaning;
             document.getElementById("question").innerHTML = radicals[i].character;
             document.getElementById("hint").innerHTML = radicals[i].meaning;
         }

@@ -1,6 +1,6 @@
 var questions = [];
 var count = [0, "/", 0];
-var toggle = false;
+var toggle = true;
 
 var radicals = {
     placeholder1: {
