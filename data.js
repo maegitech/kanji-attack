@@ -114,19 +114,19 @@ var radicals = {
         meaning: "wrap",
         index: 20
     },
-    box: {
+    spoon: {
         character: "匕",
-        meaning: "box",
+        meaning: "spoon",
         index: 21
     },
-    casket: {
+    box: {
         character: "匚",
-        meaning: "casket",
+        meaning: "box",
         index: 22
     },
-    hidingPlace: {
+    hidingEnclosure: {
         character: "匸",
-        meaning: "hiding place",
+        meaning: "hiding enclosure",
         index: 23
     },
     ten: {
